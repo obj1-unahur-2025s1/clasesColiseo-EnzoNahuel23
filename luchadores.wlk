@@ -11,26 +11,33 @@ class Mirmillon{
     const property arma
     var property armadura
     const property destreza = 15 
-    method puntosDeDefensa() = if (armadura = escudo) armadura.defensa() + destreza * 0.10 else armadura.defensa()
+    method puntosDeDefensa() = armadura.defensa() + destreza
+    method puntosDeAtaque() = self.fuerza() + self.arma().ataque()
     method atacar(objetivo){
+        objetivo.recibirAtaque(self.puntosDeAtaque()/*diferencia entre puntos de ataque y defensa del atacado*/)
+    }
+    method recibirAtaque(daño){
         //Terminar 
     }
-    method recibirAtaque(){
-        //Terminar 
-    }
+
 }
 
 class Dimachaeru{
     const property fuerza = 10
     var property arma = []
     const property armadura = cascoDelMomo
-    const property destreza 
+    var destreza 
     method ataque() = arma.ataque()
     method defensa() = 0
+    method puntosDeAtaque(){
+        //sumatoria de poder de ataque de armas totales 
+    }
     method atacar(objetivo){
+        objetivo.recibirAtaque(/*self.puntosDeAtaque()diferencia entre puntos de ataque y defensa del atacado*/)
+        destreza += 1
+    }
+    method recibirAtaque(daño){
         //Terminar 
     }
-    method recibirAtaque(){
-        //Terminar 
-    }
+    method puntosDeDefensa() = destreza / 2
 }
